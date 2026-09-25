@@ -1,15 +1,14 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NODE_ENV === "production";
-const basePath = isProd ? "/creative-Point-Media" : "";
+const isGitHubPages = process.env.GITHUB_PAGES === "true";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  basePath,
-  assetPrefix: isProd ? "/creative-Point-Media/" : undefined,
+  output: isGitHubPages ? "export" : undefined,
+  basePath: isGitHubPages ? "/creative-Point-Media" : "",
+  assetPrefix: isGitHubPages ? "/creative-Point-Media/" : undefined,
   allowedDevOrigins: ["127.0.0.1"],
   images: {
-    unoptimized: true,
+    unoptimized: isGitHubPages,
     remotePatterns: [
       {
         protocol: "https",
