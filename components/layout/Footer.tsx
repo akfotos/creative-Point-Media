@@ -14,11 +14,12 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-wine text-white shadow-[0_-30px_80px_-15px_rgba(0,0,0,0.85)]">
-      {/* CTA band */}
-      <section className="relative py-20 md:py-28">
+    <footer className="relative overflow-hidden bg-wine text-white">
+      {/* Footer info + CTA */}
+      <section className="py-10 md:py-12">
         <Container>
-          <div className="flex flex-col items-start justify-between gap-10 lg:flex-row lg:items-end">
+          {/* CTA row */}
+          <div className="mb-10 flex flex-col items-start justify-between gap-6 border-b border-white/10 pb-10 lg:flex-row lg:items-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -26,13 +27,13 @@ export function Footer() {
               transition={{ duration: 0.6, ease: "easeInOut" }}
               className="max-w-3xl"
             >
-              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
+              <span className="mb-3 block text-xs font-semibold uppercase tracking-[0.2em] text-white/60">
                 Start a Project
               </span>
-              <h2 className="font-display text-4xl font-bold uppercase leading-[0.95] tracking-tight text-white [text-shadow:0_4px_30px_rgba(0,0,0,0.8),0_2px_8px_rgba(0,0,0,0.6)] md:text-6xl lg:text-7xl">
+              <h2 className="font-display text-2xl font-bold uppercase leading-[0.95] tracking-tight text-white md:text-3xl">
                 Let&apos;s build your next campaign.
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/70">
                 From brand films to campaign photography, we craft visual work
                 that moves audiences and drives results.
               </p>
@@ -46,19 +47,14 @@ export function Footer() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-wine shadow-xl shadow-black/50 transition-all duration-300 hover:bg-white/90 hover:shadow-2xl hover:shadow-black/60 hover:scale-[1.02] active:scale-[0.98] lg:text-base"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-wine transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98]"
               >
                 Book a Project
               </Link>
             </motion.div>
           </div>
-        </Container>
-      </section>
 
-      {/* Footer info */}
-      <section className="border-t border-white/10 py-16 md:py-20">
-        <Container>
-          <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
             {/* Brand column */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -70,9 +66,9 @@ export function Footer() {
               <img
                 src="/logo-light.png"
                 alt="Creative Point Media"
-                className="h-auto w-full max-h-40 object-contain object-left drop-shadow-[0_12px_32px_rgba(0,0,0,0.7)] md:max-h-48"
+                className="h-auto w-auto max-h-16 object-contain object-left md:max-h-20"
               />
-              <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/70">
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/70">
                 Creative Point Media is a multidisciplinary studio crafting
                 bold stories through photography, film, and brand identity.
               </p>
@@ -85,7 +81,7 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.05, ease: "easeInOut" }}
             >
-              <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.15em] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.7)]">
+              <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.15em] text-white">
                 Navigate
               </h3>
               <nav className="flex flex-col gap-3">
@@ -122,7 +118,7 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeInOut" }}
             >
-              <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.15em] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.7)]">
+              <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.15em] text-white">
                 Contact
               </h3>
               <div className="flex flex-col gap-4">
@@ -154,7 +150,7 @@ export function Footer() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.15, ease: "easeInOut" }}
             >
-              <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.15em] text-white [text-shadow:0_2px_14px_rgba(0,0,0,0.7)]">
+              <h3 className="mb-6 text-xs font-semibold uppercase tracking-[0.15em] text-white">
                 Follow
               </h3>
               <div className="flex flex-col gap-3">
@@ -180,7 +176,7 @@ export function Footer() {
       </section>
 
       {/* Bottom bar */}
-      <section className="border-t border-white/10 py-8">
+      <section className="border-t border-white/10 py-6">
         <Container>
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <p className="text-sm text-white/50">

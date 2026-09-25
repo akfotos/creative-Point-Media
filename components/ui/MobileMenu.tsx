@@ -52,7 +52,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <Link
                 href="/"
                 onClick={onClose}
-                className="block rounded-lg border border-accent/20 bg-accent/[0.04] px-2 py-1 shadow-sm"
+                className="block"
               >
                 <img
                   src="/logo-dark.png"
