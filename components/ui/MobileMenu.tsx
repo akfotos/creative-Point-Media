@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import Link from "next/link";
@@ -15,6 +16,22 @@ interface MobileMenuProps {
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKey);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [isOpen, onClose]);
+
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
@@ -28,9 +45,9 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-40 bg-background/95 backdrop-blur-xl md:hidden"
+          className="fixed inset-0 z-[60] bg-background/95 backdrop-blur-xl md:hidden"
         >
-          <div className="flex h-full flex-col px-6 py-24">
+          <div className="flex h-full flex-col px-6 pb-8 pt-28">
             <div className="absolute left-6 top-5">
               <Link
                 href="/"
@@ -40,12 +57,12 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <img
                   src="/logo-dark.png"
                   alt="Creative Point Media"
-                  className="logo-adaptive-dark h-auto w-full max-h-24 object-contain object-left drop-shadow-sm"
+                  className="logo-adaptive-dark h-14 w-auto object-contain object-left drop-shadow-sm"
                 />
                 <img
                   src="/logo-light.png"
                   alt="Creative Point Media"
-                  className="logo-adaptive-light h-auto w-full max-h-24 object-contain object-left"
+                  className="logo-adaptive-light h-14 w-auto object-contain object-left"
                 />
               </Link>
             </div>
@@ -58,7 +75,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <X size={18} />
             </button>
 
-            <nav className="flex flex-col gap-6">
+            <nav className="flex flex-col gap-6 overflow-y-auto">
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -79,7 +96,7 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               ))}
             </nav>
 
-            <div className="mt-auto">
+            <div className="mt-auto pt-6">
               <Button href="/contact" onClick={onClose} className="w-full">
                 Book a Project
               </Button>
